@@ -22,13 +22,13 @@ public class BaseEntity {
     @Column(name = "MEMBER_LOGINDATE")
     private LocalDateTime MEMBER_LOGINDATE;
 
-    @LastModifiedDate
-    @Column(name = "BOARD_WRITEDATE")
-    private LocalDateTime BOARD_WRITEDATE;
-
-    @LastModifiedDate
-    @Column(name = "REPLY_WRITHDATE")
-    LocalDateTime REPLY_WRITHDATE;
+//    @LastModifiedDate
+//    @Column(name = "BOARD_WRITEDATE")
+//    private LocalDateTime BOARD_WRITEDATE;
+//
+//    @LastModifiedDate
+//    @Column(name = "REPLY_WRITHDATE")
+//    LocalDateTime REPLY_WRITHDATE;
 
 
     @Column(length = 50, nullable = false)

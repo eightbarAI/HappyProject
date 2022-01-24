@@ -32,7 +32,6 @@ public class Reply extends BaseEntity{
     @Column(length = 4, nullable = false)
     private  Long REPLY_PASSWORD;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Board board;
 
