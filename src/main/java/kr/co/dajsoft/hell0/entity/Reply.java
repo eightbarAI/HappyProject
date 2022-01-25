@@ -10,13 +10,14 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "board_number")
 
 public class Reply extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long REPLY_ID;
+    private String REPLY_ID;
 
+    //?써야돼 ?
     @Column(length = 30, nullable = false)
     private  String MEMBER_NICKNAME;
 
@@ -33,9 +34,9 @@ public class Reply extends BaseEntity{
     private  Long REPLY_PASSWORD;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Board board;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Member member;
+    private Board board_number;
+//보드가 있어서 굳이 ? 암튼 샘은 안함
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private Member member;
 
 }

@@ -19,7 +19,7 @@ public class MemberVO {
     private String MEMBER_NICKNAME;
     private String MEMBER_GENDER;
     private String MEMBER_ADDRESS;
-
+  //  private String writer;
     private LocalDateTime MEMBER_LOGINDATE;
     private LocalDateTime MEMBER_JOINDATE;
 }

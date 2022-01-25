@@ -1,6 +1,7 @@
 package kr.co.dajsoft.hell0.entity;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +14,6 @@ import java.util.List;
 @ToString
 public class Member extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String MEMBER_NICKNAME;
 
     @Column(length = 200, nullable = false)
@@ -33,6 +33,8 @@ public class Member extends BaseEntity {
 
     @Column(length = 600)
     private  String MEMBER_ADDRESS;
+
+    private String writer;
 
     @OneToMany
     private List<Board> board;

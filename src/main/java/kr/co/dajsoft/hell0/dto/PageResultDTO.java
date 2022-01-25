@@ -1,4 +1,4 @@
-package kr.co.dajsoft.hell0.dto;
-
-public class PageResultDTO {
-}
+//package kr.co.dajsoft.hell0.dto;
+//
+//public class PageResultDTO {
+//}

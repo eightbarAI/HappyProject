@@ -1,4 +1,7 @@
 package kr.co.dajsoft.hell0.repository;
 
-public interface MemberRepository {
+import kr.co.dajsoft.hell0.entity.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MemberRepository extends JpaRepository<Member, String> {
 }

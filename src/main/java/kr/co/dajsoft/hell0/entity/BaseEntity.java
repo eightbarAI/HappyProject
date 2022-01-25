@@ -31,6 +31,6 @@ public class BaseEntity {
 //    LocalDateTime REPLY_WRITHDATE;
 
 
-    @Column(length = 50, nullable = false)
-    private  String MEMBER_IP;
+//    @Column(length = 50, nullable = false)
+//    private  String MEMBER_IP;
 }

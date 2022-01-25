@@ -1,9 +1,6 @@
 package kr.co.dajsoft.hell0.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,8 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "writer")
+
 
 public class Board extends BaseEntity{
     @Id
@@ -28,6 +27,8 @@ public class Board extends BaseEntity{
     @Column
     private Long BOARD_READCNT;
 
+
+    //?
     @ManyToOne(fetch = FetchType.LAZY)
     private Member writer;
 
