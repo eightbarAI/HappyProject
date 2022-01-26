@@ -15,6 +15,7 @@ public class BoardDTO {
     private String BOARD_TITLE;
     private String BOARD_CONTENT;
 
+    private String MEMBER_EMAIL;
     private String BOARD_NICKNAME;
 
 

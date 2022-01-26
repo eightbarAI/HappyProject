@@ -11,15 +11,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Log4j2
-
 public class BoardServiceImpl implements BoardService{
     private final BoardRepository boardRepository;
-
-    @Override
-    public BoardDTO entityToDTO(Board board, Member member) {
-        return BoardService.super.entityToDTO(board, member);
-    }
-
 
     @Override
     public Long register(BoardDTO dto) {
@@ -29,6 +22,6 @@ public class BoardServiceImpl implements BoardService{
         return board.getBOARD_NUMBER();
     }
 
-    private Board dtoToEntity(BoardDTO dto) {
-    }
+
+
 }
