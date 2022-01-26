@@ -5,13 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.time.LocalDateTime;
 
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberVO {
+public class MemberDTO {
+
     private String MEMBER_PW;
     private String MEMBER_NAME;
     private String MEMBER_EMAIL;
@@ -22,4 +24,5 @@ public class MemberVO {
 
     private LocalDateTime MEMBER_LOGINDATE;
     private LocalDateTime MEMBER_JOINDATE;
+
 }

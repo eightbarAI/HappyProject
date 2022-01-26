@@ -14,7 +14,6 @@ public class BoardDTO {
     private Long BOARD_NUMBER;
     private String BOARD_TITLE;
     private String BOARD_CONTENT;
-
     private String BOARD_NICKNAME;
 
 
