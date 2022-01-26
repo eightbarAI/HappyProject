@@ -13,8 +13,8 @@ import javax.persistence.*;
 @ToString(exclude = "board_number")
 
 public class Reply extends BaseEntity{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String REPLY_ID;
 
     //?써야돼 ?

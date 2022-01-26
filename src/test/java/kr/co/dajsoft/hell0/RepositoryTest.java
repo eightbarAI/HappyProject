@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+import java.util.Optional;
 import java.util.Random;
 
 @SpringBootTest
@@ -40,7 +42,7 @@ public class RepositoryTest {
             memberRepository.save(member);
         }
     }
-   //@Test
+   @Test
     public void insertBoards(){
         for(int i=1; i<=3; i=i+1){
             Member member = Member.builder()
@@ -65,24 +67,38 @@ public class RepositoryTest {
             boardRepository.save(board);
         }
     }
-//    @Test
-//    public void insertReplys(){
-//        Random r = new Random();
-//        for(long i=1; i<=3; i=i+1){
-//            Board board = Board.builder()
-//                    .BOARD_NUMBER((long)(r.nextInt(100) + 1))
-//                    .build();
-//
-//            Reply reply = Reply.builder()
-//                    .REPLY_ID("guest"+i)
-//                    .REPLY_CONTENT("댓글..." + i)
-//                    .REPLY_IP("182.168."+i)
-//                    .REPLY_PASSWORD(1234L)
-//                    .REPLY_SERCERET("y")
-//                    .MEMBER_NICKNAME("user" + i )
-//                    .board_number(board)
-//                    .build();
-//            replyRepository.save(reply);
-//        }
-//    }
+    //@Test
+    public void insertReplys(){
+        Random r = new Random();
+        for(long i=1; i<=3; i=i+1){
+            Board board = Board.builder()
+                    .BOARD_NUMBER((long)(r.nextInt(1) + 1))
+                    .build();
+//와....해동인 천재야........
+            //걍 숫자가 안 맞아서 그런거였움
+            //보드값이 3개면 랜덤댓글달아줄 것도 3개 이하여야햐는데
+            //100개나 설정해놓으니 ^^ 되겟?니
+            Reply reply = Reply.builder()
+                    .REPLY_IP((("198.168"+i)))
+                    .REPLY_CONTENT("댓글..." + i)
+                    .REPLY_PASSWORD(1234L)
+                    .REPLY_SERCERET("d")
+                    .MEMBER_NICKNAME("")
+                    .REPLY_ID("sfd")
+                    .board_number(board)
+                    .build();
+            replyRepository.save(reply);
+        }
+    }
+    @Test
+    @Transactional
+    public void lazyLoading(){
+        Optional<Board> board = boardRepository.findById(1L);
+        if(board.isPresent()){
+            System.out.println(board.get());
+            System.out.println(board.get().getWriter());
+        }
+    }
+
+
 }
