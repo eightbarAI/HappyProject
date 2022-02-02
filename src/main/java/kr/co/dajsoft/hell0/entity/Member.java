@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 public class Member extends BaseEntity {
     @Id
-    private String MEMBER_NICKNAME;
+    private  String MEMBER_NICKNAME;//여기
     private  String MEMBER_PW;
     private  String MEMBER_NAME;
     private  String MEMBER_EMAIL;
