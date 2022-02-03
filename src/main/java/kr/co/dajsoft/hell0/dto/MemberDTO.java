@@ -15,6 +15,7 @@ public class MemberDTO {
     private String memberNICKNAME;
     private String memberGENDER;
     private String memberADDRESS;
+    private String ip;
 
     private LocalDateTime memberLOGINDATE;
     private LocalDateTime memberJOINDATE;

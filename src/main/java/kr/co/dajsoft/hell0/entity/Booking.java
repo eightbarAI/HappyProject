@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "member_NAME")
+@ToString(exclude = "memberNAME")
 public class Booking extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

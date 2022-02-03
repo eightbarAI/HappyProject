@@ -31,8 +31,6 @@ public class Member extends BaseEntity {
     @Column(length = 600)
     private String memberADDRESS;
 
-    private String ip;
-
     private String writer;
 
     @OneToMany
