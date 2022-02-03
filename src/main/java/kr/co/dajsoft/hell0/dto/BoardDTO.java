@@ -25,4 +25,6 @@ public class BoardDTO {
  private LocalDateTime member_LOGINDATE;
  private LocalDateTime board_WRITEDATE;
 
+ private int replyCount;
+
 }
