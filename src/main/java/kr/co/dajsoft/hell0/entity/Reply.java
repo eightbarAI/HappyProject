@@ -15,7 +15,8 @@ import javax.persistence.*;
 public class Reply extends BaseEntity{
 
     @Id
-    private String REPLY_ID;
+
+    private Long REPLY_ID;
 
     //?써야돼 ?
     @Column(length = 30, nullable = false)

@@ -23,8 +23,8 @@ public class ServiceTest {
                 .BOARD_CONTENT("삽입을 테스트 합니다.")
                 .BOARD_NICKNAME("user1@gmail.com")
                 .build();
-        Long board = boardService.register(dto);
-        System.out.println("삽입한 글 번호:" + bno);
+        Long board_number = boardService.register(dto);
+        System.out.println("삽입한 글 번호:" + board_number);
     }
 
 
