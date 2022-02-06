@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
     //안됏
-    @Query("select b, w from Board b left join b.writer w where b.boardNUMBER = :bno")
+    @Query("select b, w from Board b left join b.memberNICKNAME w where b.boardNUMBER = :bno")
     Object getBoardWithWriter(@Param("bno") Long boardNUMBER);
 
     //bno 에 해당하는 Board 를 가져올 때 Member에 대한 정보도 가져오기
@@ -23,13 +23,13 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     //안됏 //목록 보기를 위한 메서드 //안됏
     //JPQL 에서는 Page 단위로 리턴할 때 countQuery 가 필수
     @Query(value = "select b, w, count(r)" +
-            "from Board b LEFT JOIN b.writer w LEFT JOIN Reply r ON r.board = b " +
+            "from Board b LEFT JOIN b.memberNICKNAME w LEFT JOIN Reply r ON r.board = b " +
             "GROUP BY b",
             countQuery = "select count(b) from Board b")
     Page<Object []> getBoardWithReplyCount(Pageable pageable);
 
     //게시글 상세보기를 위한 메서드
-    @Query("select b, w, count(r) from Board b left join b.writer w left outer join Reply r on r.board = b where b.boardNUMBER = :boardNUMBER")
+    @Query("select b, w, count(r) from Board b left join b.memberNICKNAME w left outer join Reply r on r.board = b where b.boardNUMBER = :boardNUMBER")
     Object getBoardByBno(@Param("boardNUMBER") Long boardNUMBER);
 
 }

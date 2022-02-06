@@ -11,11 +11,7 @@ public interface BoardService {
     //게시물 등록을 위한 메서드
     public Long register(BoardDTO dto);
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 8a27e20704129bfa75d294e15807b3c22219749c
     //목록 보기 요청을 처리할 메서드
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO dto);
 
@@ -23,14 +19,15 @@ public interface BoardService {
 
     default Board dtoToEntity(BoardDTO dto){
         Member member = Member.builder()
-                .member_EMAIL(dto.getMember_EMAIL())
+                .memberNICKNAME(dto.getMemberNICKNAME())
                 .build();
 
         Board board = Board.builder()
-                .board_NUMBER((long) dto.getBoard_NUMBER())
-                .board_TITLE(dto.getBoard_TITLE())
-                .board_CONTENT(dto.getBoard_CONTENT())
-                .writer(member)
+                .boardNUMBER((long) dto.getBoardNUMBER())
+                .boardTITLE(dto.getBoardTITLE())
+                .boardCONTENT(dto.getBoardCONTENT())
+                .boardNICKNAME(dto.getBoardNICKNAME())
+                .memberNICKNAME(member)
                 .build();
         return board;
 
@@ -39,12 +36,13 @@ public interface BoardService {
                                  Member member,
                                  Long replyCount){
         BoardDTO dto = BoardDTO .builder()
-                .board_NUMBER(Math.toIntExact(board.getBoard_NUMBER()))
-                .board_TITLE(board.getBoard_TITLE())
-                .board_CONTENT(board.getBoard_CONTENT())
-                .board_WRITEDATE(board.getRegDate())
-                .member_EMAIL(member.getMember_EMAIL())
+                .boardNUMBER(Math.toIntExact(board.getBoardNUMBER()))
+                .boardTITLE(board.getBoardTITLE())
+                .boardCONTENT(board.getBoardCONTENT())
+                .boardWRITEDATE(board.getRegDate())
+                .memberNICKNAME(member.getMemberNICKNAME())
                 .replyCount(replyCount.intValue())
+                .boardNICKNAME(board.getBoardNICKNAME())
                 .build();
         return dto;
     }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "writer")
+@ToString(exclude = "memberNICKNAME")
 public class Board extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,8 @@ public class Board extends BaseEntity{
     private String ip;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Member writer;
+    @JoinColumn(name = "memberNICKNAME")
+    private Member memberNICKNAME;
 
 
 }

@@ -19,7 +19,9 @@ public class BoardDTO {
  private int boardREADCNT;
  private String boardNICKNAME;
 
- private String memberEMAIL;
+ private String memberNICKNAME;
+
+ //private String writer;
 
  private LocalDateTime memberJOINDATE;
  private LocalDateTime memberLOGINDATE;

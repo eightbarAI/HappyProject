@@ -6,77 +6,43 @@ import kr.co.dajsoft.hell0.dto.PageResultDTO;
 import kr.co.dajsoft.hell0.entity.Board;
 import kr.co.dajsoft.hell0.entity.Member;
 import kr.co.dajsoft.hell0.repository.BoardRepository;
-import kr.co.dajsoft.hell0.repository.MemberRepository;
-import kr.co.dajsoft.hell0.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
-import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor
-@Log4j
-
+@Log4j2
 public class BoardServiceImpl implements BoardService{
-
-   // private final MemberRepository memberRepository;
-
     private final BoardRepository boardRepository;
-
-    private final ReplyRepository replyRepository;
-
 
     @Override
     public Long register(BoardDTO dto) {
+        //등록을 위해서 Entity 객체로 변환
         Board board = dtoToEntity(dto);
         boardRepository.save(board);
-        return board.getBoard_NUMBER();
+        return board.getBoardNUMBER();
     }
 
     @Override
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO dto) {
-        Page<Object []> result = boardRepository.searchPage(
-                dto.getType(), dto.getKeyword(),
-                dto.getPageable(Sort.by("bno").descending())
-        );
-
-        Function<Object[], BoardDTO> fn = (
-                en -> entityToDTO((Board)en[0],
-                        (Member)en[1],
-                        (Long)en[2]));
-        return new PageResultDTO<>(result, fn);
-
+        return null;
     }
 
     @Override
     public BoardDTO get(Long board_number) {
-        Object result= boardRepository.getBoardByboard_number(board_number);
-        Object [] ar = (Object []) result;
-        return entityToDTO((Board)ar[0], (Member)ar[1], (Long)ar[2]);
-
+        return null;
     }
 
     @Override
     public void removeWithReplies(Long board_number) {
-        replyRepository.deleteByboard_number(board_number);
-        boardRepository.deleteById(board_number);
+
     }
 
     @Override
     public void modify(BoardDTO dto) {
-        Optional<Board> board =
-                boardRepository.findById(dto.getBoard_NUMBER());
-        if(board.isPresent()){
-            board.get().changeboard_Title(dto.getTitle());
-            board.get().changeContent(dto.getContent());
 
-            boardRepository.save(board.get());
-
-        }
+    }
 
 
 }
