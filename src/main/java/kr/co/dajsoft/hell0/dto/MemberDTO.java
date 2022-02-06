@@ -1,25 +1,45 @@
 package kr.co.dajsoft.hell0.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import kr.co.dajsoft.hell0.entity.Member;
+import lombok.*;
 
 import java.time.LocalDateTime;
-
-@Builder
+@ToString
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class MemberDTO {
-    private String member_PW;
-    private String member_NAME;
-    private String member_EMAIL;
-    private String member_PHONE;
-    private String member_NICKNAME;
-    private String member_GENDER;
-    private String member_ADDRESS;
+    private String memberPW;
+    private String memberNAME;
+    private String memberEMAIL;
+    private String memberPHONE;
+    private String memberNICKNAME;
+    private String memberGENDER;
+    private String memberADDRESS;
+    private String ip;
 
-    private LocalDateTime member_LOGINDATE;
-    private LocalDateTime member_JOINDATE;
+    private LocalDateTime memberLOGINDATE;
+    private LocalDateTime memberJOINDATE;
+
+    public Member toEntity(){
+        return Member.builder()
+                .memberNAME(memberNAME)
+                .memberNICKNAME(memberNICKNAME)
+                .memberPHONE(memberPHONE)
+                .memberGENDER(memberGENDER)
+                .memberEMAIL(memberEMAIL)
+                .memberADDRESS(memberADDRESS)
+                .memberPW(memberPW)
+                .build();
+    }
+
+    @Builder
+    public MemberDTO(String memberADDRESS, String memberEMAIL, String memberGENDER, String memberNAME, String memberNICKNAME, String memberPHONE, String memberPW){
+        this.memberADDRESS = memberADDRESS;
+        this.memberEMAIL = memberEMAIL;
+        this.memberGENDER = memberGENDER;
+        this.memberNAME = memberNAME;
+        this.memberNICKNAME = memberNICKNAME;
+        this.memberPHONE = memberPHONE;
+        this.memberPW = memberPW;
+    }
 }

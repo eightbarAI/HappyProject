@@ -7,36 +7,43 @@ import java.util.List;
 
 @Entity
 @Getter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class Member extends BaseEntity {
     @Id
-    private String member_NICKNAME;
+    private String memberNICKNAME;
 
     @Column(length = 200, nullable = false)
-    private  String member_PW;
+    private String memberPW;
 
     @Column(length = 30, nullable = false)
-    private  String member_NAME;
+    private String memberNAME;
 
     @Column(length = 200, nullable = false)
-    private  String member_EMAIL;
+    private String memberEMAIL;
 
     @Column(length = 11, nullable = false)
-    private  String member_PHONE;
+    private String memberPHONE;
 
     @Column(length = 3, nullable = false)
-    private  String member_GENDER;
+    private String memberGENDER;
 
     @Column(length = 600)
-    private  String member_ADDRESS;
-
-    private String ip;
+    private String memberADDRESS;
 
     private String writer;
 
     @OneToMany
     private List<Board> board;
+
+    @Builder
+    public Member(String memberADDRESS, String memberEMAIL, String memberGENDER, String memberNAME, String memberNICKNAME, String memberPHONE, String memberPW) {
+        this.memberADDRESS = memberADDRESS;
+        this.memberEMAIL = memberEMAIL;
+        this.memberGENDER = memberGENDER;
+        this.memberNAME = memberNAME;
+        this.memberNICKNAME = memberNICKNAME;
+        this.memberPHONE = memberPHONE;
+        this.memberPW = memberPW;
+    }
 }

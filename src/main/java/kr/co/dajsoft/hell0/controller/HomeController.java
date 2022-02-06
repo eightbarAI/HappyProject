@@ -15,6 +15,10 @@ public class HomeController {
     public String index(){
         return "/board/list";
     }
+    @GetMapping("board/login")
+    public String login(){
+        return "/login/index";
+    }
     @GetMapping("board/member")
     public String member(){
         return "/board/member";

@@ -13,7 +13,7 @@ public class BookingTest {
 
     @Test
     public void insertBooking(){
-        Booking booking = Booking.builder().booking_NAME("정효재").booking_PAYMENT("O").booking_PLACE_ADDRESS("서울시 서대문구").booking_PLACE_NAME("우리집").booking_TEAMMEMBER(11).ip("198.189").build();
+        Booking booking = Booking.builder().bookingNAME("정효재").bookingPAYMENT("O").bookingPLACEADDRESS("서울시 서대문구").bookingPLACENAME("우리집").bookingTEAMMEMBER(11).ip("198.189").build();
         bookingRepository.save(booking);
 
     }

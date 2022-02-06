@@ -11,6 +11,11 @@ public interface BoardService {
     //게시물 등록을 위한 메서드
     public Long register(BoardDTO dto);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8a27e20704129bfa75d294e15807b3c22219749c
     //목록 보기 요청을 처리할 메서드
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO dto);
 
