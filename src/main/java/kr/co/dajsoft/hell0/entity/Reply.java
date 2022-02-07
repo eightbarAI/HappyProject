@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "boardNUMBER")
+//@ToString(exclude = {"boardNUMBER", "memberNICKNAME"})
 public class Reply extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -32,5 +32,13 @@ public class Board extends BaseEntity{
     @JoinColumn(name = "memberNICKNAME")
     private Member memberNICKNAME;
 
+    public void changeTitle(String title){
+        this.boardTITLE = title;
+    }
+
+    //content를 수정하는 메서드
+    public void changeContent(String content){
+        this.boardCONTENT = content;
+    }
 
 }

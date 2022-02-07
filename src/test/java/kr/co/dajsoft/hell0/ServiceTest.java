@@ -39,13 +39,13 @@ public class ServiceTest {
 
     }
     //???????nullpointexception
-   // @Test
+    @Test
     public void testList(){
         PageRequestDTO dto = new PageRequestDTO();
-       // dto.setSize(20);
+        dto.setSize(20);
         PageResultDTO<BoardDTO, Object[]> result =
                 boardService.getList(dto);
-        //result.setPageSu(5);
+        //result.setPageSu(1);
         for(BoardDTO boardDTO : result.getDtoList()){
             System.out.println(boardDTO);
         }

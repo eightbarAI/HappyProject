@@ -6,9 +6,15 @@ import kr.co.dajsoft.hell0.dto.PageResultDTO;
 import kr.co.dajsoft.hell0.entity.Board;
 import kr.co.dajsoft.hell0.entity.Member;
 import kr.co.dajsoft.hell0.repository.BoardRepository;
+import kr.co.dajsoft.hell0.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor
@@ -26,23 +32,48 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO dto) {
-        return null;
+         Page<Object []> result = boardRepository.searchPage(
+                dto.getType(), dto.getKeyword(),
+                dto.getPageable(Sort.by("boardNUMBER").descending())
+        );
+
+        Function<Object[], BoardDTO> fn = (
+                en -> entityToDTO((Board)en[0],
+                        (Member)en[1],
+                        (Long)en[2]));
+        return new PageResultDTO<>(result, fn);
+
     }
 
     @Override
     public BoardDTO get(Long board_number) {
-        return null;
+
+        Object result= boardRepository.getBoardByBno(board_number);
+        Object [] ar = (Object []) result;
+        return entityToDTO((Board)ar[0], (Member)ar[1], (Long)ar[2]);
+
     }
+    private final ReplyRepository replyRepository;
 
     @Override
     public void removeWithReplies(Long board_number) {
-
+        replyRepository.deleteById(board_number);
+        boardRepository.deleteById(board_number);
     }
 
     @Override
     public void modify(BoardDTO dto) {
+        Optional<Board> board =
+                boardRepository.findById((long) dto.getBoardNUMBER());
+        if(board.isPresent()){
+            board.get().changeTitle(dto.getBoardTITLE());
+            board.get().changeContent(dto.getBoardCONTENT());
 
+            boardRepository.save(board.get());
+        }
+
+    }
     }
 
 
-}
+

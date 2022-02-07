@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board, Long> {
+public interface BoardRepository extends JpaRepository<Board, Long>, SearchBoardRepository {
     //안됏
     @Query("select b, w from Board b left join b.memberNICKNAME w where b.boardNUMBER = :bno")
     Object getBoardWithWriter(@Param("bno") Long boardNUMBER);
@@ -32,4 +32,5 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
     @Query("select b, w, count(r) from Board b left join b.memberNICKNAME w left outer join Reply r on r.board = b where b.boardNUMBER = :boardNUMBER")
     Object getBoardByBno(@Param("boardNUMBER") Long boardNUMBER);
 
+    //Page<Object[]> searchPage(String type, String keyword, Pageable bno);
 }
