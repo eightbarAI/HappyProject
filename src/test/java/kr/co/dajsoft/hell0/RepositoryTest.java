@@ -79,7 +79,7 @@ public class RepositoryTest {
     }
     @Autowired
     private ReplyRepository replyRepository;
-   // @Test
+  //  @Test
     public void insertReplys(){
        Random r = new Random();
        for(long i=1; i<=50; i=i+1){

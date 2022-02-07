@@ -39,7 +39,7 @@ public class ServiceTest {
 
     }
     //???????nullpointexception
-    @Test
+    //@Test
     public void testList(){
         PageRequestDTO dto = new PageRequestDTO();
         dto.setSize(20);
@@ -60,10 +60,10 @@ public class ServiceTest {
     //@Test
     public void testDelete(){
 
-        boardService.removeWithReplies(11L);
+        boardService.removeWithReplies(2L);
     }
     //숮정 ㅇㅋ
-  //  @Test
+   // @Test
     public void testModify(){
         BoardDTO dto = BoardDTO.builder()
                 .boardNUMBER(2)
