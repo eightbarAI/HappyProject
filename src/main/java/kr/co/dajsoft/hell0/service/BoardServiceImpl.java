@@ -19,7 +19,9 @@ import java.util.function.Function;
 @Service
 @RequiredArgsConstructor
 @Log4j2
+
 public class BoardServiceImpl implements BoardService{
+
     private final BoardRepository boardRepository;
 
     @Override
@@ -42,7 +44,6 @@ public class BoardServiceImpl implements BoardService{
                         (Member)en[1],
                         (Long)en[2]));
         return new PageResultDTO<>(result, fn);
-
     }
 
     @Override
@@ -53,6 +54,7 @@ public class BoardServiceImpl implements BoardService{
         return entityToDTO((Board)ar[0], (Member)ar[1], (Long)ar[2]);
 
     }
+
     private final ReplyRepository replyRepository;
 
     @Override
@@ -71,9 +73,8 @@ public class BoardServiceImpl implements BoardService{
 
             boardRepository.save(board.get());
         }
-
     }
-    }
+}
 
 
 

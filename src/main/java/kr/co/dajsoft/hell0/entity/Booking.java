@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Getter
 @ToString(exclude = "memberNAME")
 public class Booking extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingID;

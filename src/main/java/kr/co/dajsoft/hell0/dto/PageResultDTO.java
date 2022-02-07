@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 @Data
 //DTO 클래스 와 Entity 클래스를 Generic 으로 설정
 public class PageResultDTO<DTO, EN> {
+
     private List<DTO> dtoList;
 
     private int totalPage, start, end;

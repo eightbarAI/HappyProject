@@ -24,16 +24,13 @@ import java.util.Random;
 @SpringBootTest
 public class RepositoryTest {
 
-
-
     @Autowired
     private MemberRepository memberRepository;
 
     @Autowired
     private BoardRepository boardRepository;
 
-
-//    @Test
+    //@Test
     public void insertMembers(){
         for(int i=1; i<=100; i=i+1){
             Member member = Member.builder()
@@ -44,12 +41,11 @@ public class RepositoryTest {
                     .memberADDRESS("seoul")
                     .memberPHONE("01077717524")
                     .memberGENDER("m")
-
                     .build();
             memberRepository.save(member);
         }
     }
-  // @Test
+    //@Test
     public void insertBoards(){
         for(int i=1; i<=100; i=i+1){
             Member member = Member.builder()
@@ -68,18 +64,16 @@ public class RepositoryTest {
                     .boardNICKNAME("daj"+i)
                     .boardREADCNT(1L)
                     .boardNUMBER((long) i)
-
                     .memberNICKNAME(member)
                     .build();
             boardRepository.save(board);
         }
 
-
-
     }
     @Autowired
     private ReplyRepository replyRepository;
-  //  @Test
+
+    //@Test
     public void insertReplys(){
        Random r = new Random();
        for(long i=1; i<=50; i=i+1){
@@ -92,10 +86,9 @@ public class RepositoryTest {
                    .replyCONTENT("댓글..." + i)
                    .replyPASSWORD(1234L)
                    .replySERCERET("d")
-                 //  .memberNICKNAME("dal")
-                 //  .ip("168.180"+i)
-
-                 //  .replyID("sfd")
+                   //.memberNICKNAME("dal")
+                   //.ip("168.180"+i)
+                   //.replyID("sfd")
                    .board(board)
                    .build();
            replyRepository.save(reply);
@@ -120,8 +113,8 @@ public class RepositoryTest {
 //            replyRepository.save(reply);
 //        }
     }
-   // @Test
-//    @Transactional
+    //@Test
+    //@Transactional
     public void lazyLoading(){
         Optional<Board> board = boardRepository.findById(1L);
         if(board.isPresent()){
@@ -129,25 +122,25 @@ public class RepositoryTest {
             System.out.println(board.get().getMemberNICKNAME());
         }
     }
-    //얘는 왜 안돼 ? could not initialize proxy - no Session
-   // @Test
-//    @Transactional
+    //해결 >> could not initialize proxy - no Session >> @Transactional
+    // @Test
+    //@Transactional
     public void testJoin1(){
         Object result = boardRepository.getBoardWithWriter(1L);
         Object []  arr = (Object []) result;
         System.out.println(Arrays.toString(arr));
     }
 
-//    @Test
+    //@Test
     public void testJoin2(){
         List<Object[]> result = boardRepository.getBoardWithReply(1L);
         for(Object []  arr : result){
             System.out.println(Arrays.toString(arr));
         }
-
     }
+
     //@Test //could not initialize proxy - no Session
-//    @Transactional
+    //@Transactional
     public void testBoardList(){
         //페이징 조건 생성 - 0 페이지에 10개의 데이터를 bno의 내림차순으로 가져오기
         Pageable pageable = PageRequest.of(0, 1, Sort.by("boardNUMBER").descending());
@@ -159,17 +152,13 @@ public class RepositoryTest {
             Object[] ar = (Object [])row;
             System.out.println(Arrays.toString(ar));
         });
-
     }
-//    @Test
-//    @Transactional
+
+    //@Test
+    //@Transactional
     public void testBoard(){
         Object result = boardRepository.getBoardByBno(1L);
         Object [] ar = (Object []) result;
         System.out.println(Arrays.toString(ar));
     }
-
-
-
-
 }

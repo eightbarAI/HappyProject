@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 //@ToString(exclude = {"boardNUMBER", "memberNICKNAME"})
 public class Reply extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long replyID;

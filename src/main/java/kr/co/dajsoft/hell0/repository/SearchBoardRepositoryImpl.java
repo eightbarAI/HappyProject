@@ -30,11 +30,13 @@ public class SearchBoardRepositoryImpl
         implements SearchBoardRepository {
 
     public SearchBoardRepositoryImpl(){
+
         super(Board.class);
     }
 
     @Override
     public Board search() {
+
         log.info("search 메서드 호출");
         //Board 엔티티에 쿼리를 수행하기 위한 객체 생성
         QBoard board = QBoard.board;
@@ -65,6 +67,7 @@ public class SearchBoardRepositoryImpl
 
     @Override
     public Page<Object[]> searchPage(String type, String keyword, Pageable pageable) {
+
         //3개의 Entity Join
         QBoard board = QBoard.board;
         QMember member = QMember.member;

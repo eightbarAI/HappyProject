@@ -11,7 +11,6 @@ public interface BoardService {
     //게시물 등록을 위한 메서드
     public Long register(BoardDTO dto);
 
-
     //목록 보기 요청을 처리할 메서드
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO dto);
 
@@ -30,8 +29,8 @@ public interface BoardService {
                 .memberNICKNAME(member)
                 .build();
         return board;
-
     }
+
     default BoardDTO entityToDTO(Board board,
                                  Member member,
                                  Long replyCount){
@@ -46,9 +45,9 @@ public interface BoardService {
                 .build();
         return dto;
     }
+
     public void removeWithReplies(Long board_number);
 
     public void modify(BoardDTO dto);
-
 
 }

@@ -13,11 +13,11 @@ public class MemberController {
 
     private MemberService memberService;
 
-//    // 메인 페이지
-//    @GetMapping("/board/login")
-//    public String index() {
-//        return "/index";
-//    }
+        //    // 메인 페이지
+        //    @GetMapping("/board/login")
+        //    public String index() {
+        //        return "/index";
+        //    }
 
     // 회원가입 페이지
     @GetMapping("/login/signup")

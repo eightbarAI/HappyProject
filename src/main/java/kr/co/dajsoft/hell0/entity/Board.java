@@ -11,12 +11,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString(exclude = "memberNICKNAME")
 public class Board extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long boardNUMBER;
 
     @Column(length = 100, nullable = false)
     private String boardTITLE;
+
     @Column(columnDefinition = "TEXT", nullable = false)
     private String boardCONTENT;
 

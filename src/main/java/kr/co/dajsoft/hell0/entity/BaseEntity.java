@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @EntityListeners(value = {AuditingEntityListener.class})
 @Getter
 public class BaseEntity {
+
     @CreatedDate
     @Column(name = "regdate", updatable = false)
     private LocalDateTime regDate;
@@ -23,7 +24,7 @@ public class BaseEntity {
     private LocalDateTime modDate;
 
 
-   // @Column(length = 50, nullable = false)
-  //  private  String ip;
+    //@Column(length = 50, nullable = false)
+    //private  String ip;
 
 }

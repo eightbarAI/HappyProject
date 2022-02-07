@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 public class MemberDTO {
+
     private String memberPW;
     private String memberNAME;
     private String memberEMAIL;
@@ -16,7 +17,7 @@ public class MemberDTO {
     private String memberGENDER;
     private String memberADDRESS;
     private String ip;
-//    private String writer;
+    //private String writer;
 
     private LocalDateTime memberLOGINDATE;
     private LocalDateTime memberJOINDATE;

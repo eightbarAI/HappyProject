@@ -13,20 +13,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BoardDTO {
 
- private int boardNUMBER;
- private String boardTITLE;
- private String  boardCONTENT;
- private int boardREADCNT;
- private String boardNICKNAME;
+     private int boardNUMBER;
+     private String boardTITLE;
+     private String  boardCONTENT;
+     private int boardREADCNT;
+     private String boardNICKNAME;
 
- private String memberNICKNAME;
+     private String memberNICKNAME;
 
- //private String writer;
+     //private String writer;
 
- private LocalDateTime memberJOINDATE;
- private LocalDateTime memberLOGINDATE;
- private LocalDateTime boardWRITEDATE;
+     private LocalDateTime memberJOINDATE;
+     private LocalDateTime memberLOGINDATE;
+     private LocalDateTime boardWRITEDATE;
 
- private int replyCount;
+     private int replyCount;
 
 }

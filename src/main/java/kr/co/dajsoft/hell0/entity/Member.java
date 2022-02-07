@@ -10,6 +10,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class Member extends BaseEntity {
+
     @Id
     private String memberNICKNAME;
 
@@ -31,10 +32,10 @@ public class Member extends BaseEntity {
     @Column(length = 600)
     private String memberADDRESS;
 
-//    private String writer;
+    //private String writer;
 
-//    @OneToMany
-//    private List<Board> board;
+    //@OneToMany
+    //private List<Board> board;
 
     @Builder
     public Member(String memberADDRESS, String memberEMAIL, String memberGENDER, String memberNAME, String memberNICKNAME, String memberPHONE, String memberPW) {

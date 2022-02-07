@@ -23,7 +23,9 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 @RequiredArgsConstructor
+
 public class MemberService implements UserDetailsService {
+
     private MemberRepository memberRepository;
 
     @Transactional
