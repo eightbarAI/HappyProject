@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Log4j2
 @RequiredArgsConstructor
 public class HomeController {
-    @GetMapping({"/","board/list"})
+    private final BoardService boardService;
+
+    @GetMapping("/")
     public String index(){
         return "/board/list";
     }
@@ -24,8 +26,9 @@ public class HomeController {
         return "/board/member";
     }
     @GetMapping("board/board")
-    public String board(){
-        return "/board/board";
+    public String board(PageRequestDTO pageRequestDTO, Model model){
+        model.addAttribute("result", boardService.getList(pageRequestDTO));
+        return "board/board";
     }
     @GetMapping("board/basketball")
     public String basketball(){

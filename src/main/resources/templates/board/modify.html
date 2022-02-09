@@ -24,11 +24,11 @@
       </div>
       <div class="form-group">
         <label >Content</label>
-        <textarea class="form-control" rows="5" name="content">[[${dto.content}]]</textarea>
+        <textarea class="form-control" rows="5" name="content">[[${dto.boardCONTENT}]]</textarea>
       </div>
       <div class="form-group">
         <label >Writer</label>
-        <input type="text" class="form-control" name="writer" th:value="${dto.writerEmail}" readonly>
+        <input type="text" class="form-control" name="writer" th:value="${dto.boardNICKNAME}" readonly>
       </div>
 
       <div class="form-group">
@@ -86,7 +86,7 @@
 
         //목록 보기로 이동
         actionForm
-                .attr("action", "/board/list")
+                .attr("action", "/board/board")
                 .attr("method","get");
 
         actionForm.submit();

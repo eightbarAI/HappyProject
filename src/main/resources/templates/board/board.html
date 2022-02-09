@@ -17,7 +17,7 @@
         </h1>
 
         <!-- 검색 폼 -->
-        <form action="/board/list" method="get" id="searchForm">
+        <form action="/board/board" method="get" id="searchForm">
             <div class="input-group">
                 <!-- 기본 페이지 번호를 숨김으로 생성 -->
                 <input type="hidden" name="page" value = "1">
@@ -60,7 +60,7 @@
                 <!-- 글 번호 출력 -->
                 <th scope="row">
                     <!-- 상세보기 링크 -->
-                    <a th:href="@{/board/read(bno = ${dto.bno},
+                    <a th:href="@{/board/read(bno = ${dto.boardNUMBER},
                     page= ${result.page},
                     type=${pageRequestDTO.type},
                     keyword = ${pageRequestDTO.keyword})}">
@@ -81,13 +81,13 @@
         <ul class="pagination h-100 justify-content-center align-items-center">
             <!-- 이전 -->
             <li class="page-item " th:if="${result.prev}">
-                <a class="page-link" th:href="@{/board/list(page= ${result.start -1},
+                <a class="page-link" th:href="@{/board/board(page= ${result.start -1},
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} ) }" tabindex="-1">Previous</a>
             </li>
             <!-- 페이지 번호 - 현재 페이지 번호에는 링크를 설정하지 않음 -->
             <li th:class=" 'page-item ' + ${result.page == page?'active':''} " th:each="page: ${result.pageList}">
-                <a class="page-link" th:href="@{/board/list(page = ${page} ,
+                <a class="page-link" th:href="@{/board/board(page = ${page} ,
                    type=${pageRequestDTO.type} ,
                    keyword = ${pageRequestDTO.keyword}  )}">
                     [[${page}]]
@@ -95,7 +95,7 @@
             </li>
             <!-- 다음 -->
             <li class="page-item" th:if="${result.next}">
-                <a class="page-link" th:href="@{/board/list(page= ${result.end + 1} ,
+                <a class="page-link" th:href="@{/board/board(page= ${result.end + 1} ,
                     type=${pageRequestDTO.type} ,
                     keyword = ${pageRequestDTO.keyword} )}">Next</a>
             </li>
