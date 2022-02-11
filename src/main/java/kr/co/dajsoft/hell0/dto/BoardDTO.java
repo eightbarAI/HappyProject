@@ -13,16 +13,19 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class BoardDTO {
 
- private int boardNUMBER;
- private String boardTITLE;
- private String  boardCONTENT;
- private int boardREADCNT;
- private String boardNICKNAME;
+     private int boardNUMBER;
+     private String boardTITLE;
+     private String  boardCONTENT;
+     private int boardREADCNT;
+     private String boardNICKNAME;
 
- private String memberEMAIL;
+     private String memberNICKNAME;
 
- private LocalDateTime memberJOINDATE;
- private LocalDateTime memberLOGINDATE;
- private LocalDateTime boardWRITEDATE;
+     //private String writer;
+
+     private LocalDateTime regDATE;
+     private LocalDateTime modDATE;
+
+     private int replyCount;
 
 }

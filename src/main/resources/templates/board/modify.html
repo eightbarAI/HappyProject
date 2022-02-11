@@ -15,20 +15,20 @@
 
       <div class="form-group">
         <label >Bno</label>
-        <input type="text" class="form-control" name="bno" th:value="${dto.bno}" readonly >
+        <input type="text" class="form-control" name="boardNUMBER" th:value="${dto.boardNUMBER}" readonly >
       </div>
 
       <div class="form-group">
         <label>Title</label>
-        <input type="text" class="form-control" name="title" th:value="${dto.title}" >
+        <input type="text" class="form-control" name="boardTITLE" th:value="${dto.boardTITLE}" >
       </div>
       <div class="form-group">
         <label >Content</label>
-        <textarea class="form-control" rows="5" name="content">[[${dto.content}]]</textarea>
+        <textarea class="form-control" rows="5" name="boardCONTENT">[[${dto.boardCONTENT}]]</textarea>
       </div>
       <div class="form-group">
-        <label >Writer</label>
-        <input type="text" class="form-control" name="writer" th:value="${dto.writerEmail}" readonly>
+        <label >NICKNAME</label>
+        <input type="text" class="form-control" name="boardNICKNAME" th:value="${dto.boardNICKNAME}" readonly>
       </div>
 
       <div class="form-group">
@@ -86,7 +86,7 @@
 
         //목록 보기로 이동
         actionForm
-                .attr("action", "/board/list")
+                .attr("action", "/board/board")
                 .attr("method","get");
 
         actionForm.submit();

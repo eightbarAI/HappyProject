@@ -16,10 +16,10 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Getter
 public class MM {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int mmNUM; // INT PRIMARY KEY,
-
     private String mmNAME; // VARCHAR(15) NOT NULL,
     private String mmTEAMNAME; // VARCHAR(30) NOT NULL
 

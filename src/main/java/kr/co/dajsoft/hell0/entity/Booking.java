@@ -11,8 +11,9 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString(exclude = "member_NAME")
+@ToString(exclude = "memberNAME")
 public class Booking extends BaseEntity{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingID;
@@ -33,6 +34,7 @@ public class Booking extends BaseEntity{
     private int bookingTEAMMEMBER;
 
     private String ip;
+
 
     @ManyToOne
     private Member memberNAME;

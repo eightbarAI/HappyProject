@@ -10,10 +10,11 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "board")
+//@ToString(exclude = {"boardNUMBER", "memberNICKNAME"})
 public class Reply extends BaseEntity{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long replyID;
 
     @Column(length = 300, nullable = false)
@@ -28,10 +29,12 @@ public class Reply extends BaseEntity{
     private String ip;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberNICKNAME")
     private Member memberNICKNAME;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "boardNUMBER")
     private Board board;
 
 }
