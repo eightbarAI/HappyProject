@@ -3,6 +3,7 @@ package kr.co.dajsoft.hell0.controller;
 
 import kr.co.dajsoft.hell0.dto.BoardDTO;
 import kr.co.dajsoft.hell0.dto.PageRequestDTO;
+import kr.co.dajsoft.hell0.entity.Member;
 import kr.co.dajsoft.hell0.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @Log4j2

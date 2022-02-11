@@ -22,7 +22,7 @@ public class Board extends BaseEntity{
     @Column(columnDefinition = "TEXT", nullable = false)
     private String boardCONTENT;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 100)
     private String boardNICKNAME;
 
     @Column
@@ -30,7 +30,7 @@ public class Board extends BaseEntity{
 
     private String ip;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "memberNICKNAME")
     private Member memberNICKNAME;
 

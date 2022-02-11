@@ -1,6 +1,8 @@
 package kr.co.dajsoft.hell0.entity;
 
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.id.Assigned;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +14,8 @@ import java.util.List;
 public class Member extends BaseEntity {
 
     @Id
+    @GeneratedValue(generator = "memberNICKNAME")
+    @GenericGenerator(name = "memberNICKNAME", strategy = "uuid")
     private String memberNICKNAME;
 
     @Column(length = 200, nullable = false)

@@ -60,19 +60,20 @@
                 <!-- 글 번호 출력 -->
                 <th scope="row">
                     <!-- 상세보기 링크 -->
-                    <a th:href="@{/board/read(bno = ${dto.boardNUMBER},
+                    <a th:href="@{/board/read(boardNUMBER = ${dto.boardNUMBER},
                     page= ${result.page},
                     type=${pageRequestDTO.type},
                     keyword = ${pageRequestDTO.keyword})}">
-                        [[${dto.bno}]]
+                        [[${dto.boardNUMBER}]]
                     </a>
                 </th>
                 <!-- 제목 과 댓글 수 를 출력 -->
-                <td>[[${dto.title}]] ----------------  [<b th:text="${dto.replyCount}"></b>]</td>
+                <td>[[${dto.boardTITLE}]] ---------------- </td>
                 <!-- 작성자 이름 과 이메일 출력 -->
-                <td>[[${dto.writerName}]] <small>[[${dto.writerEmail}]]</small> </td>
+                <td>[[${dto.memberNICKNAME}]] <small>[[${dto.memberNICKNAME}]]</small> </td>
                 <!-- 작성일을 출력 -->
-                <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+
+                <td>yyyy-MM-dd</td>
             </tr>
             </tbody>
         </table>

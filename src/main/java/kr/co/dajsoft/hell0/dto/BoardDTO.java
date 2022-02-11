@@ -23,9 +23,8 @@ public class BoardDTO {
 
      //private String writer;
 
-     private LocalDateTime memberJOINDATE;
-     private LocalDateTime memberLOGINDATE;
-     private LocalDateTime boardWRITEDATE;
+     private LocalDateTime regDATE;
+     private LocalDateTime modDATE;
 
      private int replyCount;
 

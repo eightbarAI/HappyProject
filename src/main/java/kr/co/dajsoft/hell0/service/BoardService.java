@@ -26,11 +26,12 @@ public interface BoardService {
                 .boardTITLE(dto.getBoardTITLE())
                 .boardCONTENT(dto.getBoardCONTENT())
                 .boardNICKNAME(dto.getBoardNICKNAME())
+
                 .memberNICKNAME(member)
+
                 .build();
         return board;
     }
-
     default BoardDTO entityToDTO(Board board,
                                  Member member,
                                  Long replyCount){
@@ -38,7 +39,8 @@ public interface BoardService {
                 .boardNUMBER(Math.toIntExact(board.getBoardNUMBER()))
                 .boardTITLE(board.getBoardTITLE())
                 .boardCONTENT(board.getBoardCONTENT())
-                .boardWRITEDATE(board.getRegDate())
+                .regDATE(board.getRegDate())
+                .modDATE(board.getModDate())
                 .memberNICKNAME(member.getMemberNICKNAME())
                 .replyCount(replyCount.intValue())
                 .boardNICKNAME(board.getBoardNICKNAME())

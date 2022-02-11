@@ -32,6 +32,7 @@ public class BoardServiceImpl implements BoardService{
         return board.getBoardNUMBER();
     }
 
+
     @Override
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO dto) {
          Page<Object []> result = boardRepository.searchPage(
@@ -47,9 +48,9 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public BoardDTO get(Long board_number) {
+    public BoardDTO get(Long boardNUMBER) {
 
-        Object result= boardRepository.getBoardByBno(board_number);
+        Object result= boardRepository.getBoardByBno(boardNUMBER);
         Object [] ar = (Object []) result;
         return entityToDTO((Board)ar[0], (Member)ar[1], (Long)ar[2]);
 
@@ -58,9 +59,9 @@ public class BoardServiceImpl implements BoardService{
     private final ReplyRepository replyRepository;
 
     @Override
-    public void removeWithReplies(Long board_number) {
-        replyRepository.deleteById(board_number);
-        boardRepository.deleteById(board_number);
+    public void removeWithReplies(Long boardNUMBER) {
+        replyRepository.deleteById(boardNUMBER);
+        boardRepository.deleteById(boardNUMBER);
     }
 
     @Override

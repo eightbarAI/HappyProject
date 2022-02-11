@@ -1,5 +1,7 @@
 package kr.co.dajsoft.hell0;
 
+import kr.co.dajsoft.hell0.dto.BoardDTO;
+import kr.co.dajsoft.hell0.dto.MemberDTO;
 import kr.co.dajsoft.hell0.entity.Board;
 import kr.co.dajsoft.hell0.entity.Member;
 
@@ -7,6 +9,8 @@ import kr.co.dajsoft.hell0.entity.Reply;
 import kr.co.dajsoft.hell0.repository.BoardRepository;
 import kr.co.dajsoft.hell0.repository.MemberRepository;
 import kr.co.dajsoft.hell0.repository.ReplyRepository;
+import kr.co.dajsoft.hell0.service.BoardService;
+import kr.co.dajsoft.hell0.service.BoardServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,29 +29,17 @@ import java.util.Random;
 public class RepositoryTest {
 
     @Autowired
+    private BoardService boardService;
+
+    @Autowired
     private MemberRepository memberRepository;
 
     @Autowired
     private BoardRepository boardRepository;
 
-    //@Test
+//    @Test
     public void insertMembers(){
-        for(int i=1; i<=100; i=i+1){
-            Member member = Member.builder()
-                    .memberEMAIL("user" + i + "@gmail.com")
-                    .memberPW("1234")
-                    .memberNAME("USER" + i)
-                    .memberNICKNAME("dal")
-                    .memberADDRESS("seoul")
-                    .memberPHONE("01077717524")
-                    .memberGENDER("m")
-                    .build();
-            memberRepository.save(member);
-        }
-    }
-    //@Test
-    public void insertBoards(){
-        for(int i=1; i<=100; i=i+1){
+        for(int i=1; i<=2; i=i+1){
             Member member = Member.builder()
                     .memberEMAIL("user" + i + "@gmail.com")
                     .memberPW("1234")
@@ -58,15 +50,29 @@ public class RepositoryTest {
                     .memberGENDER("m")
                     .build();
 
-            Board board = Board.builder()
+
+
+            memberRepository.save(member);
+        }
+    }
+    @Test
+    public void insertBoards(){
+        for(int i=1; i<=2; i=i+1){
+            MemberDTO member = MemberDTO.builder()
+                    .memberNICKNAME("dal")
+                    .build();
+
+            BoardDTO board = BoardDTO.builder()
                     .boardTITLE("제목..." + i)
                     .boardCONTENT("내용..." + i)
                     .boardNICKNAME("daj"+i)
-                    .boardREADCNT(1L)
-                    .boardNUMBER((long) i)
-                    .memberNICKNAME(member)
+                    .boardREADCNT(1)
+                    .boardNUMBER(i)
+                    .memberNICKNAME(member.getMemberNICKNAME())
                     .build();
-            boardRepository.save(board);
+            Board board1 = boardService.dtoToEntity(board);
+
+            boardRepository.save(board1);
         }
 
     }

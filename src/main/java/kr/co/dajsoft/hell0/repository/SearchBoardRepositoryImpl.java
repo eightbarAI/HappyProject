@@ -50,14 +50,14 @@ public class SearchBoardRepositoryImpl
         //Reply Entity 와 join
         jpqlQuery.leftJoin(reply).on(reply.board.eq(board));
 
-        //필요한 항목 추출
-        //jpqlQuery.select(board, member.email, reply.count()).groupBy(board);
-
-        //결과를 Board로 받은
-        //List<Board> result = jpqlQuery.fetch();
+//        //필요한 항목 추출
+//        jpqlQuery.select(board, board.memberNICKNAME, reply.count()).groupBy(board);
+//
+//        //결과를 Board로 받은
+//        List<Board> result = jpqlQuery.fetch();
 
         JPQLQuery<Tuple> tuple =
-                jpqlQuery.select(board, member.memberEMAIL, reply.count());
+                jpqlQuery.select(board, member.memberNICKNAME, reply.count());
         tuple.groupBy(board);
         List<Tuple> result = tuple.fetch();
 
@@ -111,7 +111,7 @@ public class SearchBoardRepositoryImpl
                         conditionBuilder.or(board.boardCONTENT.contains(keyword));
                         break;
                     case "w":
-                        conditionBuilder.or(member.memberEMAIL.contains(keyword));
+                        conditionBuilder.or(member.memberNICKNAME.contains(keyword));
                         break;
                 }
             }
