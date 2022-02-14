@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>회원가입 페이지</title>
+
+    <title>회원가입</title>
 </head>
 <body>
-    <h1>회원 가입</h1>
-    <hr>
+<h1>회원 가입</h1>
+<hr>
 
-    <form action="/login/signup" method="post">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+<form th:action="@{/login/signup}" method="post" modelAttribute="memberdto">
+    <div>
+        <input type="text" name="memberNAME" th:value="${memberdto?.memberNAME}" placeholder="이름을 입력해주세요.">
+        <span th:text="${valid_memberNAME}"></span>
+    </div>
+    <div>
+        <input type="text" name="memberGENDER" th:value="${memberdto?.memberGENDER}" placeholder="성별을 입력해주세요.">
+        <span th:text="${valid_memberGENDER}"></span>
+    </div>
+    <div>
+        <input type="text" name="memberNICKNAME" th:value="${memberdto?.memberNICKNAME}" placeholder="별명을 입력해주세요.">
+        <span th:text="${valid_memberNICKNAME}"></span>
+    </div>
+    <div>
+        <input type="email" name="memberEMAIL" th:value="${memberdto?.memberEMAIL}" placeholder="이메일을 입력해주세요.">
+        <span th:text="${valid_memberEMAIL}"></span>
+    </div>
+    <div>
+        <input type="password" name="memberPW" th:value="${memberdto?.memberPW}" placeholder="비밀번호를 입력해주세요.">
+        <span th:text="${valid_memberPW}"></span>
+    </div>
+    <div>
+        <input type="text" name="memberADDRESS" th:value="${memberdto?.memberADDRESS}" placeholder="주소를 입력해주세요.">
+        <span th:text="${valid_memberADDRESS}"></span>
+    </div>
+    <div>
+        <input type="text" name="memberPHONE" th:value="${memberdto?.memberPHONE}" placeholder="번호를 입력해주세요.">
+        <span th:text="${valid_memberPHONE}"></span>
+    </div>
 
-        <input type="text" name="email" placeholder="이메일 입력해주세요">
-        <input type="password" name="password" placeholder="비밀번호">
-        <button type="submit">가입하기</button>
-    </form>
+
+    <button>등록</button>
+</form>
 </body>
 </html>

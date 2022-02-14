@@ -1,21 +1,18 @@
 package kr.co.dajsoft.hell0.entity;
 
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.id.Assigned;
 
 import javax.persistence.*;
 import java.util.List;
 
+@Builder
+@AllArgsConstructor
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
 public class Member extends BaseEntity {
-
     @Id
-  //  @GeneratedValue(generator = "memberNICKNAME")
-   // @GenericGenerator(name = "memberNICKNAME", strategy = "uuid")
     private String memberNICKNAME;
 
     @Column(length = 200, nullable = false)
@@ -36,10 +33,7 @@ public class Member extends BaseEntity {
     @Column(length = 600)
     private String memberADDRESS;
 
-    //private String writer;
-
-    //@OneToMany
-    //private List<Board> board;
+    private boolean fromSocial;
 
     @Builder
     public Member(String memberADDRESS, String memberEMAIL, String memberGENDER, String memberNAME, String memberNICKNAME, String memberPHONE, String memberPW) {
