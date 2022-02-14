@@ -60,6 +60,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void removeWithReplies(Long boardNUMBER) {
+        System.out.println(boardNUMBER);
         replyRepository.deleteById(boardNUMBER);
         boardRepository.deleteById(boardNUMBER);
     }

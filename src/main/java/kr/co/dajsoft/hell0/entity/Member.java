@@ -14,8 +14,8 @@ import java.util.List;
 public class Member extends BaseEntity {
 
     @Id
-    @GeneratedValue(generator = "memberNICKNAME")
-    @GenericGenerator(name = "memberNICKNAME", strategy = "uuid")
+  //  @GeneratedValue(generator = "memberNICKNAME")
+   // @GenericGenerator(name = "memberNICKNAME", strategy = "uuid")
     private String memberNICKNAME;
 
     @Column(length = 200, nullable = false)

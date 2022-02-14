@@ -48,7 +48,7 @@ public interface BoardService {
         return dto;
     }
 
-    public void removeWithReplies(Long board_number);
+    public void removeWithReplies(Long boardNUMBER);
 
     public void modify(BoardDTO dto);
 

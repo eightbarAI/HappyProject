@@ -37,7 +37,7 @@ public class RepositoryTest {
     @Autowired
     private BoardRepository boardRepository;
 
-//    @Test
+    @Test
     public void insertMembers(){
         for(int i=1; i<=2; i=i+1){
             Member member = Member.builder()
@@ -49,9 +49,6 @@ public class RepositoryTest {
                     .memberPHONE("01077717524")
                     .memberGENDER("m")
                     .build();
-
-
-
             memberRepository.save(member);
         }
     }
