@@ -28,8 +28,6 @@ public class Board extends BaseEntity{
     @Column
     private Long boardREADCNT;
 
-    private String ip;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "memberNICKNAME")
     private Member memberNICKNAME;

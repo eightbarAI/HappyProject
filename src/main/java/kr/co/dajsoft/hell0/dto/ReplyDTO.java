@@ -17,7 +17,6 @@ public class ReplyDTO {
     private Long replyID;
     private  String memberNICKNAME;
     private  String replyCONTENT;
-    private  String replyIP;
     private  String replySERCERET;
     private  Long replyPASSWORD;
 

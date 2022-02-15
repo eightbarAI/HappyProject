@@ -18,5 +18,4 @@ public class BookingDTO {
     private Long bookingTEAMMEMBER;
     private String bookingNAME;
     private LocalDateTime bookingDATE;
-    private String bookingIP;
 }

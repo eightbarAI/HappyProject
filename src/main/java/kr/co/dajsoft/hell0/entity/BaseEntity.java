@@ -22,8 +22,4 @@ public class BaseEntity {
     @Column(name = "moddate")
     private LocalDateTime modDate;
 
-
-    @Column(length = 50)
-    private  String ip;
-
 }

@@ -12,9 +12,9 @@ public class BookingTest {
     @Autowired
     private BookingRepository bookingRepository;
 
-    @Test
+    //@Test
     public void insertBooking(){
-        Booking booking = Booking.builder().bookingNAME("정효재").bookingPAYMENT("O").bookingPLACEADDRESS("서울시 서대문구").bookingPLACENAME("우리집").bookingTEAMMEMBER(11).ip("198.189").build();
+        Booking booking = Booking.builder().bookingNAME("정효재").bookingPAYMENT("O").bookingPLACEADDRESS("서울시 서대문구").bookingPLACENAME("우리집").bookingTEAMMEMBER(11).build();
         bookingRepository.save(booking);
 
     }
