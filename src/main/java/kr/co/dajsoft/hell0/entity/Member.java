@@ -35,14 +35,21 @@ public class Member extends BaseEntity {
 
     private boolean fromSocial;
 
+
     @Builder
-    public Member(String memberADDRESS, String memberEMAIL, String memberGENDER, String memberNAME, String memberNICKNAME, String memberPHONE, String memberPW) {
-        this.memberADDRESS = memberADDRESS;
+    public Member(String memberADDRESS, String memberEMAIL, String memberGENDER, String memberNAME, String memberNICKNAME, String memberPHONE, String memberPW)
+        {
+            this.memberADDRESS = memberADDRESS;
+            this.memberEMAIL = memberEMAIL;
+            this.memberGENDER = memberGENDER;
+            this.memberNAME = memberNAME;
+            this.memberNICKNAME = memberNICKNAME;
+            this.memberPHONE = memberPHONE;
+            this.memberPW = memberPW;
+    }
+
+    public void modify(String memberEMAIL, String memberPW){
         this.memberEMAIL = memberEMAIL;
-        this.memberGENDER = memberGENDER;
-        this.memberNAME = memberNAME;
-        this.memberNICKNAME = memberNICKNAME;
-        this.memberPHONE = memberPHONE;
         this.memberPW = memberPW;
     }
 }

@@ -6,7 +6,6 @@ import lombok.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import java.time.LocalDateTime;
 @ToString
 @Data
 @NoArgsConstructor
@@ -33,8 +32,6 @@ public class MemberDTO {
 
     private String memberADDRESS;
 
-//    private LocalDateTime regd;
-//    private LocalDateTime modd;
 
     //비밀번호 암호화
     public Member toEntity(){
@@ -58,5 +55,8 @@ public class MemberDTO {
         this.memberNICKNAME = memberNICKNAME;
         this.memberPHONE = memberPHONE;
         this.memberPW = memberPW;
+
+
+
     }
 }

@@ -26,6 +26,8 @@ import java.util.*;
 public class MemberService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
+    private final BCryptPasswordEncoder passwordEncoder;
+
 //        Optional<Member> userEntityWrapper = memberRepository.findBymemberEMAIL(username);
 //        Member userEntity = userEntityWrapper.get();
 //
@@ -75,7 +77,6 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String memberEMAIL) throws UsernameNotFoundException {
         Optional<Member> memberWrapper = memberRepository.findBymemberEMAIL(memberEMAIL);
-        System.out.println(memberWrapper.toString());
         Member member = memberWrapper.get();
 
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -84,10 +85,19 @@ public class MemberService implements UserDetailsService {
         } else {
             authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
-        System.out.println(member.getMemberEMAIL());
-        System.out.println(member.getMemberPW());
-        System.out.println(authorities);
         return new User(member.getMemberEMAIL(), member.getMemberPW(), authorities);
+    }
+
+    //회원 수정(dirty checking)
+    @Transactional
+    public void modify(MemberDTO memberdto){
+        Member member = memberRepository.findBymemberEMAIL(memberdto.toEntity().getMemberEMAIL()).orElseThrow(() ->
+                new IllegalArgumentException("해당 회원이 존재하지 않습니다"));
+
+        String encPassword = passwordEncoder.encode(memberdto.getMemberPW());
+        member.modify(memberdto.getMemberEMAIL(), encPassword);
+
+
     }
 
 }

@@ -1,8 +1,11 @@
 package kr.co.dajsoft.hell0.controller;
 
 import kr.co.dajsoft.hell0.dto.MemberDTO;
+import kr.co.dajsoft.hell0.dto.MemberSessionDTO;
+import kr.co.dajsoft.hell0.loginuser.LoginUser;
 import kr.co.dajsoft.hell0.service.MemberService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.util.Map;
 
+@RequiredArgsConstructor
 @Controller
 @AllArgsConstructor
 public class MemberController {
@@ -83,4 +87,15 @@ public class MemberController {
     public String dispAdmin() {
         return "/login/admin";
     }
+
+
+    /* 회원정보 수정 */
+    @GetMapping("/modify")
+    public String modify(@LoginUser MemberSessionDTO membersessiondto, Model model) {
+        if (membersessiondto != null) {
+            model.addAttribute("member", membersessiondto.getMemberEMAIL());
+            model.addAttribute("membersessiondto", membersessiondto);
+        } return "/login/login-modify"; }
+
+
 }
