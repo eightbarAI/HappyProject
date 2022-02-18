@@ -1,11 +1,14 @@
 package kr.co.dajsoft.hell0.controller;
 
 import kr.co.dajsoft.hell0.dto.ApiDTO;
+import kr.co.dajsoft.hell0.dto.BoardDTO;
+import kr.co.dajsoft.hell0.dto.PageRequestDTO;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.BufferedInputStream;
@@ -84,5 +87,12 @@ public class RestApiController {
         }
 
         return list.toString();
+    }
+    @GetMapping({"read", "modify"})
+    //ModelAttribute를 작성한 파라미터는 아무런 작업을 하지 않아도 뷰로
+    //전달 된다.
+    public void read(@ModelAttribute("requestDTO") PageRequestDTO pageRequestDTO, Long bno, Model model){
+        BoardDTO dto = boardService.get(bno);
+        model.addAttribute("dto", dto);
     }
 }
