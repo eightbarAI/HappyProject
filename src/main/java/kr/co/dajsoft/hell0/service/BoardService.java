@@ -14,7 +14,7 @@ public interface BoardService {
     //목록 보기 요청을 처리할 메서드
     public PageResultDTO<BoardDTO, Object[]> getList(PageRequestDTO dto);
 
-    public BoardDTO get(Long board_number);
+    public BoardDTO get(Long boardNUMBER);
 
     default Board dtoToEntity(BoardDTO dto){
         Member member = Member.builder()
@@ -25,8 +25,6 @@ public interface BoardService {
                 .boardNUMBER((long) dto.getBoardNUMBER())
                 .boardTITLE(dto.getBoardTITLE())
                 .boardCONTENT(dto.getBoardCONTENT())
-                .boardNICKNAME(dto.getBoardNICKNAME())
-
                 .memberNICKNAME(member)
 
                 .build();
@@ -36,14 +34,13 @@ public interface BoardService {
                                  Member member,
                                  Long replyCount){
         BoardDTO dto = BoardDTO .builder()
-                .boardNUMBER(Math.toIntExact(board.getBoardNUMBER()))
+                .boardNUMBER(board.getBoardNUMBER())
                 .boardTITLE(board.getBoardTITLE())
                 .boardCONTENT(board.getBoardCONTENT())
                 .regDATE(board.getRegDate())
                 .modDATE(board.getModDate())
                 .memberNICKNAME(member.getMemberNICKNAME())
                 .replyCount(replyCount.intValue())
-                .boardNICKNAME(board.getBoardNICKNAME())
                 .build();
         return dto;
     }

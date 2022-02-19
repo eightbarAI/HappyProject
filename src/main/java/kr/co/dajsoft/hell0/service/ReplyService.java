@@ -13,9 +13,9 @@ public interface ReplyService {
     //데이터 수정을 위한 메서드
     public void modify(ReplyDTO replyDTO);
     //데이터 삭제를 위한 메서드
-    public void remove(Long rno);
+    public void remove(Long replyID);
     //댓글 목록을 가져오기
-    public List<ReplyDTO> getList(Long bno);
+    public List<ReplyDTO> getList(Long boardNUMBER);
 
     //ReplyDTO 를 Reply Entity로 변환해주는 메서드
     default Reply dtoToEntity(ReplyDTO replyDTO){

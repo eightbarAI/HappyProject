@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
@@ -22,7 +19,7 @@ import javax.servlet.http.HttpSession;
 @Log4j2
 @RequiredArgsConstructor
 //공통 URL 설정
-@RequestMapping("/board/")
+@RequestMapping(value = "/board/")
 public class BoardController {
     private final BoardService boardService;
 //
@@ -52,6 +49,7 @@ public class BoardController {
 
     @PostMapping("remove")
     public String remove(Long boardNUMBER, RedirectAttributes rattr){
+        System.out.println(boardNUMBER);
         boardService.removeWithReplies(boardNUMBER);
         //출력할 메시지 저장
         rattr.addFlashAttribute("msg",boardNUMBER + "삭제");
