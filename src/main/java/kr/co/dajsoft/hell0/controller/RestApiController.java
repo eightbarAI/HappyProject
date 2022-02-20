@@ -3,6 +3,11 @@ package kr.co.dajsoft.hell0.controller;
 import kr.co.dajsoft.hell0.dto.ApiDTO;
 import kr.co.dajsoft.hell0.dto.BoardDTO;
 import kr.co.dajsoft.hell0.dto.PageRequestDTO;
+import kr.co.dajsoft.hell0.repository.ApiRepository;
+import kr.co.dajsoft.hell0.service.ApiService;
+import kr.co.dajsoft.hell0.service.BoardService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -22,9 +27,13 @@ import java.util.List;
 
 
 @RestController
+@Log4j2
+@RequiredArgsConstructor
 public class RestApiController {
+    private final ApiService apiService;
+    private final ApiRepository apiRepository;
 
-    @GetMapping("/jsonapi")
+    @GetMapping("/board/basket")
     public String callApiWithJson(Model model) throws Exception {
         StringBuilder sb = new StringBuilder();
 
@@ -65,7 +74,7 @@ public class RestApiController {
         JSONObject jsonObj = (JSONObject) jsonParser.parse(sb.toString());
         JSONObject ListPublicReservationSport = (JSONObject) jsonObj.get("ListPublicReservationSport");
         JSONArray row = (JSONArray) ListPublicReservationSport.get("row");
-
+        apiRepository.deleteAll();
         for (int i = 0; i < row.size(); i++) {
             jObj = (JSONObject) row.get(i);
             ApiDTO apiDTO = new ApiDTO();
@@ -80,19 +89,21 @@ public class RestApiController {
             apiDTO.setSvcurl(jObj.get("SVCURL").toString());
             apiDTO.setAreanm(jObj.get("AREANM").toString());
             apiDTO.setTelno(jObj.get("TELNO").toString());
+            apiRepository.save(apiService.dtoToEntity(apiDTO)).getApino();
             list.add(apiDTO);
-            model.addAttribute("data",list);
+
              //4. model에 담아준다.
 
         }
-
-        return list.toString();
+            model.addAttribute("apidto",list);
+        return "/board/basketball";
     }
-    @GetMapping({"read", "modify"})
+    @GetMapping("apiread")
     //ModelAttribute를 작성한 파라미터는 아무런 작업을 하지 않아도 뷰로
     //전달 된다.
-    public void read(@ModelAttribute("requestDTO") PageRequestDTO pageRequestDTO, Long bno, Model model){
-        BoardDTO dto = boardService.get(bno);
+    public String read(@ModelAttribute("requestDTO") PageRequestDTO pageRequestDTO, Long apino, Model model){
+        ApiDTO dto = apiService.get(apino);
         model.addAttribute("dto", dto);
+        return "/board/basketball";
     }
 }

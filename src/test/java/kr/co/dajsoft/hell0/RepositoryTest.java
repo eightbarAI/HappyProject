@@ -147,18 +147,7 @@ public class RepositoryTest {
 
     //@Test //could not initialize proxy - no Session
     //@Transactional
-    public void testBoardList(){
-        //페이징 조건 생성 - 0 페이지에 10개의 데이터를 bno의 내림차순으로 가져오기
-        Pageable pageable = PageRequest.of(0, 1, Sort.by("boardNUMBER").descending());
 
-        Page<Object[]> result =
-                boardRepository.getBoardWithReplyCount(pageable);
-
-        result.get().forEach(row -> {
-            Object[] ar = (Object [])row;
-            System.out.println(Arrays.toString(ar));
-        });
-    }
 
     //@Test
     //@Transactional

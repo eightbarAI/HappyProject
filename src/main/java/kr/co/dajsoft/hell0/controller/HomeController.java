@@ -1,6 +1,7 @@
 package kr.co.dajsoft.hell0.controller;
 
 import kr.co.dajsoft.hell0.dto.PageRequestDTO;
+import kr.co.dajsoft.hell0.service.ApiService;
 import kr.co.dajsoft.hell0.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class HomeController {
     private final BoardService boardService;
-
+    private final ApiService apiService;
     @GetMapping("/")
     public String index(){
         return "/board/list";
@@ -31,7 +32,8 @@ public class HomeController {
         return "board/board";
     }
     @GetMapping("board/basketball")
-    public String basketball(){
+    public String basketball(PageRequestDTO pageRequestDTO, Model model){
+        model.addAttribute("result", apiService.getList(pageRequestDTO));
         return "/board/basketball";
     }
     @GetMapping("board/football")

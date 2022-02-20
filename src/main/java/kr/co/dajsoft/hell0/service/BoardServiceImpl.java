@@ -19,7 +19,6 @@ import java.util.function.Function;
 @Service
 @RequiredArgsConstructor
 @Log4j2
-
 public class BoardServiceImpl implements BoardService{
 
     private final BoardRepository boardRepository;

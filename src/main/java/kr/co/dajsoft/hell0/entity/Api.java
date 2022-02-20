@@ -2,9 +2,7 @@ package kr.co.dajsoft.hell0.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Builder
 @AllArgsConstructor
@@ -14,6 +12,7 @@ import javax.persistence.Id;
 @ToString
 public class Api {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long apino;
     @Column
     private String gubun;
