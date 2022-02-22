@@ -1,6 +1,7 @@
 package kr.co.dajsoft.hell0.entity;
 
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 

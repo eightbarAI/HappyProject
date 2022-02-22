@@ -1,20 +1,13 @@
 package kr.co.dajsoft.hell0.repository;
 
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.Tuple;
-import com.querydsl.core.types.Order;
-import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import kr.co.dajsoft.hell0.entity.Api;
-import kr.co.dajsoft.hell0.entity.Board;
 import kr.co.dajsoft.hell0.entity.QApi;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import java.util.List;
@@ -26,14 +19,15 @@ public class SearchApiRepositoryImpl
         implements SearchApiRepository{
 
     public SearchApiRepositoryImpl(){
-        super(Api.class);
+       super(Api.class);
     }
 
     @Override
     public Api search() {
         log.info("apisearch 메서드 호출");
-        //Api 인티티에 쿼리를 수행하기 위한 객체 생성
+        //Api 엔티티에 쿼리를 수행하기 위한 객체 생성
         QApi api = QApi.api;
+
 
         JPQLQuery<Api> jpqlQuery = from(api);
         jpqlQuery.select(api);

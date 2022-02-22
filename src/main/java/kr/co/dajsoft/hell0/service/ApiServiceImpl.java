@@ -14,6 +14,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Function;
 
 @Service
@@ -39,9 +41,13 @@ public class ApiServiceImpl implements ApiService{
     }
 
     @Override
-    public ApiDTO get(Long apino) {
-        Object result= apiRepository.getApiByBno(apino);
-        Object [] ar = (Object []) result;
-        return entityToDTO((Api) ar[0]);
+    public List<ApiDTO> get() {
+        List<Api> list = apiRepository.findAll();
+        List<ApiDTO> result = new ArrayList<>();
+        for(Api api : list){
+            result.add(entityToDTO(api));
+        }
+
+        return result;
     }
 }

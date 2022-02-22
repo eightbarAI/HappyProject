@@ -98,12 +98,5 @@ public class RestApiController {
             model.addAttribute("apidto",list);
         return "/board/basketball";
     }
-    @GetMapping("apiread")
-    //ModelAttribute를 작성한 파라미터는 아무런 작업을 하지 않아도 뷰로
-    //전달 된다.
-    public String read(@ModelAttribute("requestDTO") PageRequestDTO pageRequestDTO, Long apino, Model model){
-        ApiDTO dto = apiService.get(apino);
-        model.addAttribute("dto", dto);
-        return "/board/basketball";
-    }
+
 }

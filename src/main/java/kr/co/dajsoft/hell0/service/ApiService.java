@@ -8,11 +8,13 @@ import kr.co.dajsoft.hell0.entity.Api;
 import kr.co.dajsoft.hell0.entity.Board;
 import kr.co.dajsoft.hell0.entity.Member;
 
+import java.util.List;
+
 public interface ApiService {
 
     public PageResultDTO<ApiDTO, Object[]> getList(PageRequestDTO dto);
 
-    public ApiDTO get(Long apino);
+    public List<ApiDTO> get();
 
     default Api dtoToEntity(ApiDTO dto){
         Api api = Api.builder()

@@ -3,7 +3,6 @@ package kr.co.dajsoft.hell0.dto;
 import lombok.*;
 
 @Data
-@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
